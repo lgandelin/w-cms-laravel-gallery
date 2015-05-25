@@ -1,0 +1,19 @@
+{
+    "name": "webaccess/w-cms-laravel-gallery",
+    "type": "module",
+    "time" : "2015-05-25",
+    "description": "W CMS Laravel - Gallery module",
+    "authors": [
+        {
+            "name": "Louis Gandelin",
+            "email": "lgandelin@web-access.fr"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Webaccess\\WCMSLaravelGallery\\": "src/",
+            "Webaccess\\CMS\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
