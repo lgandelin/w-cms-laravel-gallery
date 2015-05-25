@@ -9,7 +9,7 @@ class GalleryController extends AdminController
 {
     public function index()
     {
-        return view('w-cms-laravel::back.editorial.galleries.index', [
+        return view('w-cms-laravel-gallery-back::editorial.galleries.index', [
             'galleries' => \App::make('GetGalleriesInteractor')->getAll($this->getLangID(), true),
             'error' => (\Session::has('error')) ? \Session::get('error') : null
         ]);
@@ -17,7 +17,7 @@ class GalleryController extends AdminController
 
     public function create()
     {
-        return view('w-cms-laravel::back.editorial.galleries.create');
+        return view('w-cms-laravel-gallery-back::editorial.galleries.create');
     }
 
     public function store()
@@ -32,7 +32,7 @@ class GalleryController extends AdminController
             $galleryID = \App::make('CreateGalleryInteractor')->run($galleryStructure);
             return \Redirect::route('back_galleries_edit', array('galleryID' => $galleryID));
         } catch (\Exception $e) {
-            return view('w-cms-laravel::back.editorial.galleries.create', [
+            return view('w-cms-laravel-gallery-back::editorial.galleries.create', [
                 'error' => $e->getMessage(),
                 'gallery' => $galleryStructure
             ]);
@@ -45,7 +45,7 @@ class GalleryController extends AdminController
             $gallery = \App::make('GetGalleryInteractor')->getGalleryByID($galleryID, true);
             $gallery->items = \App::make('GetGalleryItemsInteractor')->getAll($galleryID, true);
 
-            return view('w-cms-laravel::back.editorial.galleries.edit', [
+            return view('w-cms-laravel-gallery-back::editorial.galleries.edit', [
                 'gallery' => $gallery,
                 'pages' => \App::make('GetPagesInteractor')->getAll($this->getLangID(), true)
             ]);

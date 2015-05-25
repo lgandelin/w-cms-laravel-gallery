@@ -1,6 +1,6 @@
 <?php
 
-namespace CMS\Repositories;
+namespace Webaccess\CMS\Repositories;
 
 use Webaccess\CMS\Entities\Gallery;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace CMS\Interactors\GalleryItems;
+namespace Webaccess\CMS\Interactors\GalleryItems;
 
 class DeleteGalleryItemInteractor extends GetGalleryItemInteractor
 {

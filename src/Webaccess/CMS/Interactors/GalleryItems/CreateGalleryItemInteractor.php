@@ -1,6 +1,6 @@
 <?php
 
-namespace CMS\Interactors\GalleryItems;
+namespace Webaccess\CMS\Interactors\GalleryItems;
 
 use Webaccess\CMS\Entities\GalleryItem;
 use Webaccess\CMS\Repositories\GalleryItemRepositoryInterface;

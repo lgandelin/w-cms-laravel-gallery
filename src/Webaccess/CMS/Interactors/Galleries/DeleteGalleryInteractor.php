@@ -1,6 +1,6 @@
 <?php
 
-namespace CMS\Interactors\Galleries;
+namespace Webaccess\CMS\Interactors\Galleries;
 
 use Webaccess\CMS\Interactors\GalleryItems\DeleteGalleryItemInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;

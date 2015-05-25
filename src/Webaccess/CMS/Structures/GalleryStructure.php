@@ -2,6 +2,8 @@
 
 namespace Webaccess\CMS\Structures;
 
+use CMS\Structures\DataStructure;
+
 class GalleryStructure extends DataStructure
 {
     public $ID;

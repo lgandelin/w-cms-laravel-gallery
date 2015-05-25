@@ -1,6 +1,6 @@
 <?php
 
-namespace CMS\Entities;
+namespace Webaccess\CMS\Entities;
 
 class Gallery
 {

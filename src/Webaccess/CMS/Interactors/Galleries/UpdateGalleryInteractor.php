@@ -1,6 +1,6 @@
 <?php
 
-namespace CMS\Interactors\Galleries;
+namespace Webaccess\CMS\Interactors\Galleries;
 
 class UpdateGalleryInteractor extends GetGalleryInteractor
 {
