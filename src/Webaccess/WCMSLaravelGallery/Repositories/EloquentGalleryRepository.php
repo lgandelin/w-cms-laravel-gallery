@@ -31,12 +31,12 @@ class EloquentGalleryRepository implements GalleryRepositoryInterface
             $galleryModels = GalleryModel::where('lang_id', '=', $langID)->get();
         }
 
-        $gallerys = [];
+        $galleries = [];
         foreach ($galleryModels as $galleryModel) {
-            $gallerys[]= self::createGalleryFromModel($galleryModel);
+            $galleries[]= self::createGalleryFromModel($galleryModel);
         }
 
-        return $gallerys;
+        return $galleries;
     }
 
     public function createGallery(Gallery $gallery)
