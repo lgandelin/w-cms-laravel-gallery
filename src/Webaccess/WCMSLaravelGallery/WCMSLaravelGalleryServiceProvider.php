@@ -30,6 +30,14 @@ class WCMSLaravelGalleryServiceProvider extends WCMSLaravelModuleServiceProvider
             'class_name' => 'glyphicon-picture',
             'label' => trans('w-cms-laravel-gallery-back::galleries.galleries')
         ]);
+
+        //Add the new block type
+        $this->app->make('block_type')->addBlockType([
+            'code' => 'gallery',
+            'name' => 'Gallery block',
+            'content_view' => 'w-cms-laravel-gallery-back::back.ediorial.blocks.gallery',
+            'order' => 8
+        ]);
     }
 
     public function register()

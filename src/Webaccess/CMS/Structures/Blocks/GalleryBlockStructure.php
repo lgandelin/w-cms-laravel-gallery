@@ -2,8 +2,8 @@
 
 namespace Webaccess\CMS\Structures\Blocks;
 
+use CMS\Structures\BlockStructure;
 use Webaccess\CMS\Entities\Blocks\GalleryBlock;
-use Webaccess\CMS\Structures\BlockStructure;
 
 class GalleryBlockStructure extends BlockStructure
 {
