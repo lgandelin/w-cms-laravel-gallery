@@ -3,6 +3,7 @@
 namespace Webaccess\CMS\Entities\Blocks;
 
 use CMS\Entities\Block;
+use CMS\Entities\Blocks\GalleryBlock as GalleryBlockEntity;
 use CMS\Structures\BlockStructure;
 use Webaccess\CMS\Structures\Blocks\GalleryBlockStructure;
 

@@ -13,7 +13,7 @@ class GalleryBlock extends \Eloquent {
         return $this->morphOne('\Webaccess\WCMSLaravel\Models\Block', 'blockable');
     }
 
-    public function getBlockEntity() {
+    public function getEntity() {
         $block = new GalleryBlockEntity();
         $block->setGalleryID($this->gallery_id);
 
