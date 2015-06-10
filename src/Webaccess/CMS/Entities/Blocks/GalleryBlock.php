@@ -5,6 +5,8 @@ namespace Webaccess\CMS\Entities\Blocks;
 use CMS\Entities\Block;
 use CMS\Entities\Blocks\GalleryBlock as GalleryBlockEntity;
 use CMS\Structures\BlockStructure;
+use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
+use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;
 use Webaccess\CMS\Structures\Blocks\GalleryBlockStructure;
 
 class GalleryBlock extends Block
@@ -30,7 +32,7 @@ class GalleryBlock extends Block
     }
 
     public function getBlockable() {
-        return \Webaccess\WCMSLaravelGallery\Models\GalleryBlock::create([
+        return GalleryBlockModel::create([
             'gallery_id' => $this->getID()
         ]);
     }
@@ -40,5 +42,17 @@ class GalleryBlock extends Block
         if ($blockStructure->gallery_id !== null && $blockStructure->gallery_id != $this->getGalleryID()) {
             $this->setGalleryID($blockStructure->gallery_id);
         }
+    }
+
+    public function getContentData()
+    {
+        if ($this->getGalleryID()) {
+            $content = (new GetGalleryInteractor())->getGalleryByID($this->getGalleryID(), true);
+            $content->items = (new GetGalleryItemsInteractor())->getAll($this->getGalleryID(), true);
+
+            return $content;
+        }
+
+        return null;
     }
 }

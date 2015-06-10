@@ -2,21 +2,14 @@
 
 namespace Webaccess\CMS\Interactors\Galleries;
 
-use Webaccess\CMS\Repositories\GalleryRepositoryInterface;
+use CMS\Context;
 use Webaccess\CMS\Structures\GalleryStructure;
 
 class GetGalleryInteractor
 {
-    protected $repository;
-
-    public function __construct(GalleryRepositoryInterface $repository)
-    {
-        $this->repository = $repository;
-    }
-
     public function getGalleryByID($galleryID, $structure = false)
     {
-        if (!$gallery = $this->repository->findByID($galleryID)) {
+        if (!$gallery = Context::getRepository('gallery')->findByID($galleryID)) {
             throw new \Exception('The gallery was not found');
         }
 

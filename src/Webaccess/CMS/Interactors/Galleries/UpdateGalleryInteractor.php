@@ -2,6 +2,8 @@
 
 namespace Webaccess\CMS\Interactors\Galleries;
 
+use CMS\Context;
+
 class UpdateGalleryInteractor extends GetGalleryInteractor
 {
     public function run($galleryID, $galleryStructure)
@@ -28,13 +30,13 @@ class UpdateGalleryInteractor extends GetGalleryInteractor
                 throw new \Exception('There is already a gallery with the same identifier');
             }
 
-            $this->repository->updateGallery($gallery);
+            Context::getRepository('gallery')->updateGallery($gallery);
         }
     }
 
     private function anotherGalleryExistsWithSameIdentifier($galleryID, $galleryIdentifier)
     {
-        $existingGallery = $this->repository->findByIdentifier($galleryIdentifier);
+        $existingGallery = Context::getRepository('gallery')->findByIdentifier($galleryIdentifier);
 
         return ($existingGallery && $existingGallery->getID() != $galleryID);
     }

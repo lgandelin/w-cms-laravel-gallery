@@ -2,7 +2,15 @@
 
 namespace Webaccess\WCMSLaravelGallery\Http\Controllers\Back\Editorial;
 
+use Webaccess\CMS\Interactors\Galleries\CreateGalleryInteractor;
+use Webaccess\CMS\Interactors\Galleries\DeleteGalleryInteractor;
+use Webaccess\CMS\Interactors\Galleries\DuplicateGalleryInteractor;
+use Webaccess\CMS\Interactors\Galleries\GetGalleriesInteractor;
+use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
+use Webaccess\CMS\Interactors\Galleries\UpdateGalleryInteractor;
+use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;
 use Webaccess\CMS\Structures\GalleryStructure;
+use CMS\Interactors\Pages\GetPagesInteractor;
 use Webaccess\WCMSLaravel\Http\Controllers\Back\AdminController;
 
 class GalleryController extends AdminController
@@ -10,7 +18,7 @@ class GalleryController extends AdminController
     public function index()
     {
         return view('w-cms-laravel-gallery-back::editorial.galleries.index', [
-            'galleries' => \App::make('GetGalleriesInteractor')->getAll($this->getLangID(), true),
+            'galleries' => (new GetGalleriesInteractor())->getAll($this->getLangID(), true),
             'error' => (\Session::has('error')) ? \Session::get('error') : null
         ]);
     }
@@ -29,7 +37,7 @@ class GalleryController extends AdminController
         ]);
 
         try {
-            $galleryID = \App::make('CreateGalleryInteractor')->run($galleryStructure);
+            $galleryID = (new CreateGalleryInteractor())->run($galleryStructure);
             return \Redirect::route('back_galleries_edit', array('galleryID' => $galleryID));
         } catch (\Exception $e) {
             return view('w-cms-laravel-gallery-back::editorial.galleries.create', [
@@ -42,12 +50,12 @@ class GalleryController extends AdminController
     public function edit($galleryID)
     {
         try {
-            $gallery = \App::make('GetGalleryInteractor')->getGalleryByID($galleryID, true);
-            $gallery->items = \App::make('GetGalleryItemsInteractor')->getAll($galleryID, true);
+            $gallery = (new GetGalleryInteractor())->getGalleryByID($galleryID, true);
+            $gallery->items = (new GetGalleryItemsInteractor())->getAll($galleryID, true);
 
             return view('w-cms-laravel-gallery-back::editorial.galleries.edit', [
                 'gallery' => $gallery,
-                'pages' => \App::make('GetPagesInteractor')->getAll($this->getLangID(), true)
+                'pages' => (new GetPagesInteractor())->getAll($this->getLangID(), true)
             ]);
         } catch (\Exception $e) {
             \Session::flash('error', $e->getMessage());
@@ -64,7 +72,7 @@ class GalleryController extends AdminController
         ]);
 
         try {
-            \App::make('UpdateGalleryInteractor')->run($galleryID, $galleryStructure);
+            (new UpdateGalleryInteractor())->run($galleryID, $galleryStructure);
             return \Redirect::route('back_galleries_index');
         } catch (\Exception $e) {
             \Session::flash('error', $e->getMessage());
@@ -75,7 +83,7 @@ class GalleryController extends AdminController
     public function delete($galleryID)
     {
         try {
-            \App::make('DeleteGalleryInteractor')->run($galleryID);
+            (new DeleteGalleryInteractor())->run($galleryID);
             return \Redirect::route('back_galleries_index');
         } catch (\Exception $e) {
             \Session::flash('error', $e->getMessage());
@@ -86,7 +94,7 @@ class GalleryController extends AdminController
     public function duplicate($galleryID)
     {
         try {
-            \App::make('DuplicateGalleryInteractor')->run($galleryID);
+            (new DuplicateGalleryInteractor())->run($galleryID);
             return \Redirect::route('back_galleries_index');
         } catch (\Exception $e) {
             \Session::flash('error', $e->getMessage());

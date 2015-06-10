@@ -2,19 +2,12 @@
 
 namespace Webaccess\CMS\Interactors\Galleries;
 
+use CMS\Context;
 use Webaccess\CMS\Entities\Gallery;
-use Webaccess\CMS\Repositories\GalleryRepositoryInterface;
 use Webaccess\CMS\Structures\GalleryStructure;
 
 class CreateGalleryInteractor
 {
-    private $repository;
-
-    public function __construct(GalleryRepositoryInterface $repository)
-    {
-        $this->repository = $repository;
-    }
-
     public function run(GalleryStructure $galleryStructure)
     {
         $gallery = $this->createGalleryFromStructure($galleryStructure);
@@ -25,12 +18,12 @@ class CreateGalleryInteractor
             throw new \Exception('There is already a gallery with the same identifier');
         }
 
-        return $this->repository->createGallery($gallery);
+        return Context::getRepository('gallery')->createGallery($gallery);
     }
 
     private function anotherExistingGalleryWithSameIdentifier($identifier)
     {
-        return $this->repository->findByIdentifier($identifier);
+        return Context::getRepository('gallery')->findByIdentifier($identifier);
     }
 
     private function createGalleryFromStructure(GalleryStructure $galleryStructure)

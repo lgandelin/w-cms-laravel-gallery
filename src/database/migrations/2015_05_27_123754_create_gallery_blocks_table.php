@@ -12,7 +12,7 @@ class CreateGalleryBlocksTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('gallery_blocks', function($table) {
+		Schema::create('blocks_gallery', function($table) {
             $table->increments('id');
             $table->integer('gallery_id')->nullable();
             $table->integer('block_id')->nullable();
@@ -27,7 +27,7 @@ class CreateGalleryBlocksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('gallery_blocks');
+		Schema::drop('blocks_gallery');
 	}
 
 }

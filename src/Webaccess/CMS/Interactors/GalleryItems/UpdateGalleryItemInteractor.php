@@ -2,6 +2,7 @@
 
 namespace Webaccess\CMS\Interactors\GalleryItems;
 
+use CMS\Context;
 use Webaccess\CMS\Structures\GalleryItemStructure;
 
 class UpdateGalleryItemInteractor extends GetGalleryItemInteractor
@@ -22,7 +23,7 @@ class UpdateGalleryItemInteractor extends GetGalleryItemInteractor
 
             $galleryItem->valid();
 
-            $this->repository->updateGalleryItem($galleryItem);
+            Context::getRepository('gallery_item')->updateGalleryItem($galleryItem);
         }
     }
 }

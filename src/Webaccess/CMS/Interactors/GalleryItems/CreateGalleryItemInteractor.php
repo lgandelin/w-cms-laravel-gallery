@@ -2,26 +2,19 @@
 
 namespace Webaccess\CMS\Interactors\GalleryItems;
 
+use CMS\Context;
 use Webaccess\CMS\Entities\GalleryItem;
-use Webaccess\CMS\Repositories\GalleryItemRepositoryInterface;
 use Webaccess\CMS\Structures\GalleryItemStructure;
 
 class CreateGalleryItemInteractor
 {
-    private $repository;
-
-    public function __construct(GalleryItemRepositoryInterface $repository)
-    {
-        $this->repository = $repository;
-    }
-
     public function run(GalleryItemStructure $galleryItemStructure)
     {
         $galleryItem = $this->createFromGalleryItemStructure($galleryItemStructure);
 
         $galleryItem->valid();
 
-        return $this->repository->createGalleryItem($galleryItem);
+        return Context::getRepository('gallery_item')->createGalleryItem($galleryItem);
     }
 
     private function createFromGalleryItemStructure($galleryItemStructure)

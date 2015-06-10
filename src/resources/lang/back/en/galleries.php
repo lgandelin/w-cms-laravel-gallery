@@ -17,4 +17,5 @@ return array(
     'galleries' => 'Galleries',
     'create_gallery' => 'Create a a gallery',
     'edit_gallery' => 'Edit a gallery',
+    'gallery_block' => 'Gallery block',
 );
