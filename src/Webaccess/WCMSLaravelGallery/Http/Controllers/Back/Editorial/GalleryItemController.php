@@ -20,7 +20,7 @@ class GalleryItemController extends AdminController
             'class' => \Input::get('class'),
             'media_id' => \Input::get('media_id'),
             'link' => \Input::get('link'),
-            'display' => 0,
+            'display' => \Input::get('display'),
             'gallery_id' => \Input::get('gallery_id'),
             'external_url' => \Input::get('externalURL'),
         ]);
