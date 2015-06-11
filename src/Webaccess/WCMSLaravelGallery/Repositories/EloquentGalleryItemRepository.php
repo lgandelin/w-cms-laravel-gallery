@@ -74,10 +74,10 @@ class EloquentGalleryItemRepository implements GalleryItemRepositoryInterface
         $galleryItem->setText($galleryItemModel->text);
         $galleryItem->setOrder($galleryItemModel->order);
         $galleryItem->setMediaID($galleryItemModel->media_id);
-        $galleryItem->setExternalURL($galleryItemModel->link);
+        $galleryItem->setLink($galleryItemModel->link);
         $galleryItem->setClass($galleryItemModel->class);
         $galleryItem->setDisplay($galleryItemModel->display);
 
         return $galleryItem;
     }
-} 
+}

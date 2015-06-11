@@ -16,6 +16,7 @@ class CreateGalleriesTable extends Migration {
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('identifier')->nullable();
+            $table->integer('media_format_id')->nullable();
             $table->integer('lang_id')->nullable();
             $table->timestamps();
         });

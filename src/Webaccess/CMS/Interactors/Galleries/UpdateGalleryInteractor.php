@@ -24,6 +24,14 @@ class UpdateGalleryInteractor extends GetGalleryInteractor
                 $gallery->setIdentifier($galleryStructure->identifier);
             }
 
+            if (
+                isset($galleryStructure->media_format_id) &&
+                $galleryStructure->media_format_id !== null &&
+                $gallery->getMediaFormatID() != $galleryStructure->media_format_id
+            ) {
+                $gallery->setMediaFormatID($galleryStructure->media_format_id);
+            }
+
             $gallery->valid();
 
             if ($this->anotherGalleryExistsWithSameIdentifier($galleryID, $gallery->getIdentifier())) {

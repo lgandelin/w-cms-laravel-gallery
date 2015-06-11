@@ -7,6 +7,7 @@ class Gallery
     private $ID;
     private $identifier;
     private $name;
+    private $mediaformatID;
     private $langID;
 
     public function setID($ID)
@@ -37,6 +38,16 @@ class Gallery
     public function getName()
     {
         return $this->name;
+    }
+
+    public function setMediaformatID($mediaformatID)
+    {
+        $this->mediaformatID = $mediaformatID;
+    }
+
+    public function getMediaformatID()
+    {
+        return $this->mediaformatID;
     }
 
     public function setLangID($langID)

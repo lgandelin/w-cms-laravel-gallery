@@ -32,6 +32,7 @@ class CreateGalleryInteractor
         $gallery->setIdentifier($galleryStructure->identifier);
         $gallery->setName($galleryStructure->name);
         $gallery->setLangID($galleryStructure->lang_id);
+        $gallery->setMediaFormatID($galleryStructure->media_format_id);
 
         return $gallery;
     }

@@ -10,7 +10,7 @@ return array(
     'item_media' => 'Média',
     'item_class' => 'Classe CSS',
     'item_link' => 'Lien',
-    'choose_page' => 'Choisir une page',
+    'choose_gallery' => 'Choisir une galerie',
     'no_gallery_created_yet' => 'Aucune galerie créée',
     'not_found' => 'Galerie non trouvée',
     'add_gallery_item'=> 'Ajouter un item',

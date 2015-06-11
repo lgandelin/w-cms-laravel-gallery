@@ -31,12 +31,6 @@ class GalleryBlock extends Block
         return $blockStructure;
     }
 
-    public function getBlockable() {
-        return GalleryBlockModel::create([
-            'gallery_id' => $this->getID()
-        ]);
-    }
-
     public function updateContent(BlockStructure $blockStructure)
     {
         if ($blockStructure->gallery_id !== null && $blockStructure->gallery_id != $this->getGalleryID()) {

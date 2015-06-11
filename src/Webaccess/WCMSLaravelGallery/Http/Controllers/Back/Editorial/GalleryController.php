@@ -10,7 +10,8 @@ use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
 use Webaccess\CMS\Interactors\Galleries\UpdateGalleryInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;
 use Webaccess\CMS\Structures\GalleryStructure;
-use CMS\Interactors\Pages\GetPagesInteractor;
+use CMS\Interactors\Medias\GetMediasInteractor;
+use CMS\Interactors\MediaFormats\GetMediaFormatsInteractor;
 use Webaccess\WCMSLaravel\Http\Controllers\Back\AdminController;
 
 class GalleryController extends AdminController
@@ -31,8 +32,9 @@ class GalleryController extends AdminController
     public function store()
     {
         $galleryStructure = new GalleryStructure([
-            'identifier' => \Input::get('identifier'),
             'name' => \Input::get('name'),
+            'identifier' => \Input::get('identifier'),
+            'media_format_id' => \Input::get('media_format_id'),
             'lang_id' => $this->getLangID()
         ]);
 
@@ -55,7 +57,8 @@ class GalleryController extends AdminController
 
             return view('w-cms-laravel-gallery-back::editorial.galleries.edit', [
                 'gallery' => $gallery,
-                'pages' => (new GetPagesInteractor())->getAll($this->getLangID(), true)
+                'medias' => (new GetMediasInteractor())->getAll(true),
+                'media_formats' => (new GetMediaFormatsInteractor())->getAll(true)
             ]);
         } catch (\Exception $e) {
             \Session::flash('error', $e->getMessage());
@@ -69,6 +72,7 @@ class GalleryController extends AdminController
         $galleryStructure = new GalleryStructure([
             'name' => \Input::get('name'),
             'identifier' => \Input::get('identifier'),
+            'media_format_id' => \Input::get('media_format_id'),
         ]);
 
         try {

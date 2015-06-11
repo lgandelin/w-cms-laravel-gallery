@@ -23,6 +23,9 @@ class CreateGalleryItemInteractor
         if ($galleryItemStructure->title !== null) {
             $galleryItem->setTitle($galleryItemStructure->title);
         }
+        if ($galleryItemStructure->text !== null) {
+            $galleryItem->setText($galleryItemStructure->text);
+        }
         if ($galleryItemStructure->order !== null) {
             $galleryItem->setOrder($galleryItemStructure->order);
         }

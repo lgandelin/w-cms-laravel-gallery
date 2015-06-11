@@ -27,6 +27,7 @@ class DuplicateGalleryInteractor extends GetGalleryInteractor
         $galleryDuplicated->setID(null);
         $galleryDuplicated->setName($gallery->getName() . ' - COPY');
         $galleryDuplicated->setIdentifier($gallery->getIdentifier() . '-copy');
+        $galleryDuplicated->setMediaFormatID($gallery->getMediaFormatID());
         $galleryDuplicated->setLangID($gallery->getLangID());
 
         return (new CreateGalleryInteractor())->run(GalleryStructure::toStructure($galleryDuplicated));

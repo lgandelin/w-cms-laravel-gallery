@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>{{ trans('w-cms-laravel::pages.block_gallery') }}</label>
+    <label>{{ trans('w-cms-laravel-gallery-back::galleries.gallery_block') }}</label>
     <select name="gallery_id" class="gallery_id form-control" autocomplete="off" name="gallery_id">
         <option value="">{{ trans('w-cms-laravel-gallery-back::galleries.choose_gallery') }}</option>
         @if (isset($galleries))

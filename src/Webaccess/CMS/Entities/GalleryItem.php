@@ -6,6 +6,7 @@ class GalleryItem
 {
     private $ID;
     private $title;
+    private $text;
     private $link;
     private $order;
     private $class;
@@ -31,6 +32,16 @@ class GalleryItem
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+
+    public function getText()
+    {
+        return $this->text;
     }
 
     public function setLink($link)

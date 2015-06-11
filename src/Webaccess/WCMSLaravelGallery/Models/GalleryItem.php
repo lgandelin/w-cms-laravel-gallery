@@ -11,5 +11,4 @@ class GalleryItem extends \Eloquent {
     {
         return $this->hasOne('Webaccess\WCMSLaravelGallery\Models\Media');
     }
-
 }

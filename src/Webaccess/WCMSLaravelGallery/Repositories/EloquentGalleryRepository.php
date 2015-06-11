@@ -44,6 +44,7 @@ class EloquentGalleryRepository implements GalleryRepositoryInterface
         $galleryModel = new GalleryModel();
         $galleryModel->name = $gallery->getName();
         $galleryModel->identifier = $gallery->getIdentifier();
+        $galleryModel->media_format_id = $gallery->getMediaFormatID();
         $galleryModel->lang_id = $gallery->getLangID();
 
         $galleryModel->save();
@@ -56,6 +57,7 @@ class EloquentGalleryRepository implements GalleryRepositoryInterface
         $galleryModel = GalleryModel::find($gallery->getID());
         $galleryModel->name = $gallery->getName();
         $galleryModel->identifier = $gallery->getIdentifier();
+        $galleryModel->media_format_id = $gallery->getMediaFormatID();
 
         return $galleryModel->save();
     }
@@ -71,9 +73,10 @@ class EloquentGalleryRepository implements GalleryRepositoryInterface
     {
         $gallery = new Gallery();
         $gallery->setID($galleryModel->id);
-        $gallery->setIdentifier($galleryModel->identifier);
-        $gallery->setLangID($galleryModel->lang_id);
         $gallery->setName($galleryModel->name);
+        $gallery->setIdentifier($galleryModel->identifier);
+        $gallery->setMediaformatID($galleryModel->media_format_id);
+        $gallery->setLangID($galleryModel->lang_id);
 
         return $gallery;
     }

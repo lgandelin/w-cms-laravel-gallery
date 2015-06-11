@@ -38,7 +38,6 @@ class GalleryBlockType
         $this->getBlockStructureForUpdateMethod = function($arguments) {
             return new GalleryBlockStructure([
                 'gallery_id' => isset($arguments['gallery_id']) ? $arguments['gallery_id'] : null,
-                'type' => $arguments['type']
             ]);
         };
 
