@@ -17,10 +17,13 @@ class GetGalleryItemInteractor
 
         if ($structure) {
             $galleryItem = GalleryItemStructure::toStructure($galleryItem);
-            $galleryItem->media = (new GetMediaInteractor())->getMediaByID($galleryItem->media_id, true);
-            $galleryItem->media_src = asset(ShortcutHelper::get_uploads_folder() . $galleryItem->media->ID . '/' . $galleryItem->media->file_name);
-            $galleryItem->media_name = $galleryItem->media->name;
-            $galleryItem->media_id = $galleryItem->media->ID;
+
+            if ($galleryItem->media_id) {
+                $galleryItem->media = (new GetMediaInteractor())->getMediaByID($galleryItem->media_id, true);
+                $galleryItem->media_src = asset(ShortcutHelper::get_uploads_folder() . $galleryItem->media->ID . '/' . $galleryItem->media->file_name);
+                $galleryItem->media_name = $galleryItem->media->name;
+                $galleryItem->media_id = $galleryItem->media->ID;
+            }
         }
 
         return $galleryItem;

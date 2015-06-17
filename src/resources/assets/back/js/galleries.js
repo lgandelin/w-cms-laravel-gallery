@@ -26,6 +26,10 @@ $(document).ready(function() {
                 if (data.success) {
                     $('.gallery-item-form .title').val(data.gallery_item.title);
                     $('.gallery-item-form .text').val(data.gallery_item.text);
+                    if (!CKEDITOR.instances["text"]) {
+                        CKEDITOR.replace('text');
+                    }
+                    CKEDITOR.instances["text"].setData(data.gallery_item.text);
                     $('.gallery-item-form .class').val(data.gallery_item.class);
                     $('.gallery-item-form .media_id').val(data.gallery_item.media_id);
                     $('.gallery-item-form .link').val(data.gallery_item.link);
@@ -45,7 +49,7 @@ $(document).ready(function() {
         if ($(this).attr('data-action') == 'create') {
             var input_data = {
                 'title': $('.gallery-item-form .title').val(),
-                'text': $('.gallery-item-form .text').val(),
+                'text': CKEDITOR.instances["text"].getData(),
                 'order': 999,
                 'link': $('.gallery-item-form .link').val(),
                 'class': $('.gallery-item-form .class').val(),
@@ -86,7 +90,7 @@ $(document).ready(function() {
             var input_data = {
                 'ID': $(this).attr('data-id'),
                 'title': $('.gallery-item-form .title').val(),
-                'text': $('.gallery-item-form .text').val(),
+                'text': CKEDITOR.instances["text"].getData(),
                 'link': $('.gallery-item-form .link').val(),
                 'class': $('.gallery-item-form .class').val(),
                 'media_id': $('.gallery-item-form .media_id').val(),
