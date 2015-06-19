@@ -4,8 +4,6 @@ namespace Webaccess\CMS\Interactors\Galleries;
 
 use Webaccess\CMS\Interactors\GalleryItems\CreateGalleryItemInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;
-use Webaccess\CMS\Structures\GalleryItemStructure;
-use Webaccess\CMS\Structures\GalleryStructure;
 
 class DuplicateGalleryInteractor extends GetGalleryInteractor
 {
@@ -30,12 +28,12 @@ class DuplicateGalleryInteractor extends GetGalleryInteractor
         $galleryDuplicated->setMediaFormatID($gallery->getMediaFormatID());
         $galleryDuplicated->setLangID($gallery->getLangID());
 
-        return (new CreateGalleryInteractor())->run(GalleryStructure::toStructure($galleryDuplicated));
+        return (new CreateGalleryInteractor())->run($galleryDuplicated->toStructure());
     }
 
     private function duplicateGalleryItem($galleryItem, $newGalleryID)
     {
-        $galleryItemStructure = GalleryItemStructure::toStructure($galleryItem);
+        $galleryItemStructure = $galleryItem->toStructure();
         $galleryItemStructure->ID = null;
         $galleryItemStructure->gallery_id = $newGalleryID;
 

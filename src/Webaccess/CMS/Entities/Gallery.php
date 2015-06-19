@@ -2,7 +2,9 @@
 
 namespace Webaccess\CMS\Entities;
 
-class Gallery
+use CMS\Entities\Entity;
+
+class Gallery extends Entity
 {
     private $ID;
     private $identifier;

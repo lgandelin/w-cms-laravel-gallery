@@ -9,27 +9,15 @@ class UpdateGalleryInteractor extends GetGalleryInteractor
     public function run($galleryID, $galleryStructure)
     {
         if ($gallery = $this->getGalleryByID($galleryID)) {
-            if (
-                isset($galleryStructure->name) &&
-                $galleryStructure->name !== null &&
-                $gallery->getName() != $galleryStructure->name
-            ) {
-                $gallery->setName($galleryStructure->name);
-            }
-            if (
-                isset($galleryStructure->identifier) &&
-                $galleryStructure->identifier !== null &&
-                $gallery->getIdentifier() != $galleryStructure->identifier
-            ) {
-                $gallery->setIdentifier($galleryStructure->identifier);
-            }
+            $properties = get_object_vars($galleryStructure);
+            unset ($properties['ID']);
+            foreach ($properties as $property => $value) {
+                $method = ucfirst(str_replace('_', '', $property));
+                $setter = 'set' . $method;
 
-            if (
-                isset($galleryStructure->media_format_id) &&
-                $galleryStructure->media_format_id !== null &&
-                $gallery->getMediaFormatID() != $galleryStructure->media_format_id
-            ) {
-                $gallery->setMediaFormatID($galleryStructure->media_format_id);
+                if ($galleryStructure->$property !== null) {
+                    call_user_func_array(array($gallery, $setter), array($value));
+                }
             }
 
             $gallery->valid();

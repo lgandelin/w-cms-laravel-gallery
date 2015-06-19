@@ -3,7 +3,6 @@
 namespace Webaccess\CMS\Interactors\Galleries;
 
 use CMS\Context;
-use Webaccess\CMS\Structures\GalleryStructure;
 
 class GetGalleryInteractor
 {
@@ -13,6 +12,6 @@ class GetGalleryInteractor
             throw new \Exception('The gallery was not found');
         }
 
-        return ($structure) ? GalleryStructure::toStructure($gallery) : $gallery;
+        return ($structure) ? $gallery->toStructure() : $gallery;
     }
 }

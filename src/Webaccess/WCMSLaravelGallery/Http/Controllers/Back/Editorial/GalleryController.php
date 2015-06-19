@@ -9,7 +9,7 @@ use Webaccess\CMS\Interactors\Galleries\GetGalleriesInteractor;
 use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
 use Webaccess\CMS\Interactors\Galleries\UpdateGalleryInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;
-use Webaccess\CMS\Structures\GalleryStructure;
+use CMS\Structures\DataStructure;
 use CMS\Interactors\Medias\GetMediasInteractor;
 use CMS\Interactors\MediaFormats\GetMediaFormatsInteractor;
 use Webaccess\WCMSLaravel\Http\Controllers\Back\AdminController;
@@ -31,11 +31,11 @@ class GalleryController extends AdminController
 
     public function store()
     {
-        $galleryStructure = new GalleryStructure([
+        $galleryStructure = new DataStructure([
             'name' => \Input::get('name'),
             'identifier' => \Input::get('identifier'),
-            'media_format_id' => \Input::get('media_format_id'),
-            'lang_id' => $this->getLangID()
+            'mediaFormatID' => \Input::get('media_format_id'),
+            'langID' => $this->getLangID()
         ]);
 
         try {
@@ -69,10 +69,10 @@ class GalleryController extends AdminController
     public function update()
     {
         $galleryID = \Input::get('ID');
-        $galleryStructure = new GalleryStructure([
+        $galleryStructure = new DataStructure([
             'name' => \Input::get('name'),
             'identifier' => \Input::get('identifier'),
-            'media_format_id' => \Input::get('media_format_id'),
+            'mediaFormatID' => \Input::get('media_format_id'),
         ]);
 
         try {

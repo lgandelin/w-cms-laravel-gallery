@@ -4,10 +4,9 @@ namespace Webaccess\CMS\Entities\Blocks;
 
 use CMS\Entities\Block;
 use CMS\Entities\Blocks\GalleryBlock as GalleryBlockEntity;
-use CMS\Structures\BlockStructure;
+use CMS\Structures\DataStructure;
 use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;
-use Webaccess\CMS\Structures\Blocks\GalleryBlockStructure;
 
 class GalleryBlock extends Block
 {
@@ -21,21 +20,6 @@ class GalleryBlock extends Block
     public function getGalleryID()
     {
         return $this->galleryID;
-    }
-
-    public function getStructure()
-    {
-        $blockStructure = new GalleryBlockStructure();
-        $blockStructure->gallery_id = $this->getGalleryID();
-
-        return $blockStructure;
-    }
-
-    public function updateContent(BlockStructure $blockStructure)
-    {
-        if ($blockStructure->gallery_id !== null && $blockStructure->gallery_id != $this->getGalleryID()) {
-            $this->setGalleryID($blockStructure->gallery_id);
-        }
     }
 
     public function getContentData()

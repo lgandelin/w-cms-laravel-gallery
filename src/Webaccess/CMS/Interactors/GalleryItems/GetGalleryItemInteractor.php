@@ -5,7 +5,6 @@ namespace Webaccess\CMS\Interactors\GalleryItems;
 use CMS\Context;
 use Webaccess\WCMSLaravel\Helpers\ShortcutHelper;
 use CMS\Interactors\Medias\GetMediaInteractor;
-use Webaccess\CMS\Structures\GalleryItemStructure;
 
 class GetGalleryItemInteractor
 {
@@ -16,13 +15,12 @@ class GetGalleryItemInteractor
         }
 
         if ($structure) {
-            $galleryItem = GalleryItemStructure::toStructure($galleryItem);
+            $galleryItem = $galleryItem->toStructure();
 
-            if ($galleryItem->media_id) {
-                $galleryItem->media = (new GetMediaInteractor())->getMediaByID($galleryItem->media_id, true);
-                $galleryItem->media_src = asset(ShortcutHelper::get_uploads_folder() . $galleryItem->media->ID . '/' . $galleryItem->media->file_name);
+            if ($galleryItem->mediaID) {
+                $galleryItem->media = (new GetMediaInteractor())->getMediaByID($galleryItem->mediaID, true);
+                $galleryItem->media_src = asset(ShortcutHelper::get_uploads_folder() . $galleryItem->media->ID . '/' . $galleryItem->media->fileName);
                 $galleryItem->media_name = $galleryItem->media->name;
-                $galleryItem->media_id = $galleryItem->media->ID;
             }
         }
 

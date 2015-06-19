@@ -4,11 +4,11 @@ namespace Webaccess\CMS\Interactors\GalleryItems;
 
 use CMS\Context;
 use Webaccess\CMS\Entities\GalleryItem;
-use Webaccess\CMS\Structures\GalleryItemStructure;
+use CMS\Structures\DataStructure;
 
 class CreateGalleryItemInteractor
 {
-    public function run(GalleryItemStructure $galleryItemStructure)
+    public function run(DataStructure $galleryItemStructure)
     {
         $galleryItem = $this->createFromGalleryItemStructure($galleryItemStructure);
 

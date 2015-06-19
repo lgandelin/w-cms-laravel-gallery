@@ -4,11 +4,11 @@ namespace Webaccess\CMS\Interactors\Galleries;
 
 use CMS\Context;
 use Webaccess\CMS\Entities\Gallery;
-use Webaccess\CMS\Structures\GalleryStructure;
+use CMS\Structures\DataStructure;
 
 class CreateGalleryInteractor
 {
-    public function run(GalleryStructure $galleryStructure)
+    public function run(DataStructure $galleryStructure)
     {
         $gallery = $this->createGalleryFromStructure($galleryStructure);
 
@@ -26,7 +26,7 @@ class CreateGalleryInteractor
         return Context::getRepository('gallery')->findByIdentifier($identifier);
     }
 
-    private function createGalleryFromStructure(GalleryStructure $galleryStructure)
+    private function createGalleryFromStructure(DataStructure $galleryStructure)
     {
         $gallery = new Gallery();
         $gallery->setIdentifier($galleryStructure->identifier);

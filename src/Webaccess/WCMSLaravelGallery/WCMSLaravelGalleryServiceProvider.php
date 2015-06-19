@@ -15,6 +15,12 @@ class WCMSLaravelGalleryServiceProvider extends WCMSLaravelModuleServiceProvider
         include(__DIR__ . '/Http/routes.php');
         parent::initModule('gallery', __DIR__ . '/../../');
         $this->app->make('block_type')->addBlockType(new GalleryBlockType());
+
+        $this->app->make('AdminMenu')->addItem([
+            'route_name' => 'back_galleries_index',
+            'class_name' => 'glyphicon-picture',
+            'label' => trans('w-cms-laravel-gallery-back::galleries.galleries')
+        ]);
     }
 
     public function register()

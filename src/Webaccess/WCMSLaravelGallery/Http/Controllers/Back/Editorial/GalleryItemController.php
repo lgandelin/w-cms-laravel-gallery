@@ -6,23 +6,23 @@ use Webaccess\CMS\Interactors\GalleryItems\CreateGalleryItemInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\DeleteGalleryItemInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\UpdateGalleryItemInteractor;
-use Webaccess\CMS\Structures\GalleryItemStructure;
+use CMS\Structures\DataStructure;
 use Webaccess\WCMSLaravel\Http\Controllers\Back\AdminController;
 
 class GalleryItemController extends AdminController
 {
     public function create()
     {
-        $galleryItemStructure = new GalleryItemStructure([
+        $galleryItemStructure = new DataStructure([
             'title' => \Input::get('title'),
             'text' => \Input::get('text'),
             'order' => 999,
             'class' => \Input::get('class'),
-            'media_id' => \Input::get('media_id'),
+            'mediaID' => \Input::get('media_id'),
             'link' => \Input::get('link'),
             'display' => \Input::get('display'),
-            'gallery_id' => \Input::get('gallery_id'),
-            'external_url' => \Input::get('externalURL'),
+            'galleryID' => \Input::get('gallery_id'),
+            'externalURL' => \Input::get('externalURL'),
         ]);
 
         try {
@@ -48,11 +48,11 @@ class GalleryItemController extends AdminController
     public function update_infos()
     {
         $galleryItemID = \Input::get('ID');
-        $galleryItemStructure = new GalleryItemStructure([
+        $galleryItemStructure = new DataStructure([
             'title' => \Input::get('title'),
             'text' => \Input::get('text'),
             'class' => \Input::get('class'),
-            'media_id' => \Input::get('media_id'),
+            'mediaID' => \Input::get('media_id'),
             'link' => \Input::get('link'),
         ]);
 
@@ -69,7 +69,7 @@ class GalleryItemController extends AdminController
         $galleryItems = json_decode(\Input::get('gallery_items'));
         for ($i = 0; $i < sizeof($galleryItems ); $i++) {
             $galleryItemID = preg_replace('/mi-/', '', $galleryItems[$i]);
-            $galleryItemStructure = new GalleryItemStructure([
+            $galleryItemStructure = new DataStructure([
                 'order' => $i + 1,
             ]);
 
@@ -87,7 +87,7 @@ class GalleryItemController extends AdminController
     {
         try {
             $galleryItemID = \Input::get('ID');
-            $galleryItemStructure = new GalleryItemStructure([
+            $galleryItemStructure = new DataStructure([
                 'display'=> \Input::get('display')
             ]);
 

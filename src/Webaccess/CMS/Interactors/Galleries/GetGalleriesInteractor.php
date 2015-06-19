@@ -3,7 +3,6 @@
 namespace Webaccess\CMS\Interactors\Galleries;
 
 use CMS\Context;
-use Webaccess\CMS\Structures\GalleryStructure;
 
 class GetGalleriesInteractor
 {
@@ -19,7 +18,7 @@ class GetGalleriesInteractor
         $galleryStructures = [];
         if (is_array($galleries) && sizeof($galleries) > 0) {
             foreach ($galleries as $gallery) {
-                $galleryStructures[] = GalleryStructure::toStructure($gallery);
+                $galleryStructures[] = $gallery->toStructure();
             }
         }
 

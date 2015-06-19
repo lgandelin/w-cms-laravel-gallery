@@ -2,7 +2,9 @@
 
 namespace Webaccess\CMS\Entities;
 
-class GalleryItem
+use CMS\Entities\Entity;
+
+class GalleryItem extends Entity
 {
     private $ID;
     private $title;

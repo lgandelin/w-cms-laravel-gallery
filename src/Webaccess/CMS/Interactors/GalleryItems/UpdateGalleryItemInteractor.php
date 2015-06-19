@@ -3,11 +3,11 @@
 namespace Webaccess\CMS\Interactors\GalleryItems;
 
 use CMS\Context;
-use Webaccess\CMS\Structures\GalleryItemStructure;
+use CMS\Structures\DataStructure;
 
 class UpdateGalleryItemInteractor extends GetGalleryItemInteractor
 {
-    public function run($galleryItemID, GalleryItemStructure $galleryItemStructure)
+    public function run($galleryItemID, DataStructure $galleryItemStructure)
     {
         if ($galleryItem = $this->getGalleryItemByID($galleryItemID)) {
             $properties = get_object_vars($galleryItemStructure);
