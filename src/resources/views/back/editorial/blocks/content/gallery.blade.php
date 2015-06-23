@@ -4,7 +4,7 @@
         <option value="">{{ trans('w-cms-laravel-gallery-back::galleries.choose_gallery') }}</option>
         @if (isset($galleries))
             @foreach ($galleries as $gallery)
-                <option value="{{ $gallery->ID }}" @if ($block->galleryID == $gallery->ID) selected="selected" @endif>{{ $gallery->name }}</option>
+                <option value="{{ $gallery->ID }}" @if (isset($block) && $block->galleryID == $gallery->ID) selected="selected" @endif>{{ $gallery->name }}</option>
             @endforeach
         @endif
     </select>
