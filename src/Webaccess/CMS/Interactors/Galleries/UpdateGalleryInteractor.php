@@ -3,23 +3,14 @@
 namespace Webaccess\CMS\Interactors\Galleries;
 
 use CMS\Context;
+use CMS\DataStructure;
 
 class UpdateGalleryInteractor extends GetGalleryInteractor
 {
-    public function run($galleryID, $galleryStructure)
+    public function run($galleryID, DataStructure $galleryStructure)
     {
         if ($gallery = $this->getGalleryByID($galleryID)) {
-            $properties = get_object_vars($galleryStructure);
-            unset ($properties['ID']);
-            foreach ($properties as $property => $value) {
-                $method = ucfirst(str_replace('_', '', $property));
-                $setter = 'set' . $method;
-
-                if ($galleryStructure->$property !== null) {
-                    call_user_func_array(array($gallery, $setter), array($value));
-                }
-            }
-
+            $gallery-setInfos($galleryStructure);
             $gallery->valid();
 
             if ($this->anotherGalleryExistsWithSameIdentifier($galleryID, $gallery->getIdentifier())) {

@@ -8,7 +8,7 @@
                     <p>{{ $item->text }}</p>
 
                     @if (isset($item->media))
-                        <img src="{{ asset(Shortcut::get_uploads_folder() . $item->media->ID . '/' . $item->media->file_name) }}" alt="{{ $item->media->alt }}" style="display: block; max-width: 100%; height: auto" />
+                        <img src="{{ asset(Shortcut::get_uploads_folder() . $item->media->ID . '/' . $item->media->fileName) }}" alt="{{ $item->media->alt }}" />
                     @endif
                     @if ($item->link)</a>@endif
                 @endif

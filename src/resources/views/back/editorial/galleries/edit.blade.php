@@ -118,17 +118,7 @@
 
                         <!-- Media -->
                         <div class="form-group">
-
-                            <div id="gallery-item-media-id">
-                                <div class="thumbnail" style="width:200px; margin-bottom: 15px">
-                                    <img style="max-width: 100%; display:block" src="" />
-                                    <span class="media-name" style="margin-top: 5px; display: block;"></span>
-                                </div>
-
-                                <label for="media_id">{{ trans('w-cms-laravel-gallery-back::galleries.item_media') }}</label>
-                                <input name="media_id" class="media_id" type="hidden" value="" />
-                            </div>
-                            <input type="button" class="btn btn-primary open-medias-modal" data-div-id="gallery-item-media-id" value="{{ trans('w-cms-laravel::generic.browse') }}" />
+                            @include ('w-cms-laravel::back.editorial.includes.media_field', ['divID' => 'gallery-item', 'media' => null])
                         </div>
                         <!-- Media -->
 

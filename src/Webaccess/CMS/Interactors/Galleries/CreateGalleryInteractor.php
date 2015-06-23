@@ -3,15 +3,15 @@
 namespace Webaccess\CMS\Interactors\Galleries;
 
 use CMS\Context;
+use CMS\DataStructure;
 use Webaccess\CMS\Entities\Gallery;
-use CMS\Structures\DataStructure;
 
 class CreateGalleryInteractor
 {
     public function run(DataStructure $galleryStructure)
     {
-        $gallery = $this->createGalleryFromStructure($galleryStructure);
-
+        $gallery = new Gallery();
+        $gallery->setInfos($galleryStructure);
         $gallery->valid();
 
         if ($this->anotherExistingGalleryWithSameIdentifier($gallery->getIdentifier())) {
@@ -24,16 +24,5 @@ class CreateGalleryInteractor
     private function anotherExistingGalleryWithSameIdentifier($identifier)
     {
         return Context::getRepository('gallery')->findByIdentifier($identifier);
-    }
-
-    private function createGalleryFromStructure(DataStructure $galleryStructure)
-    {
-        $gallery = new Gallery();
-        $gallery->setIdentifier($galleryStructure->identifier);
-        $gallery->setName($galleryStructure->name);
-        $gallery->setLangID($galleryStructure->lang_id);
-        $gallery->setMediaFormatID($galleryStructure->media_format_id);
-
-        return $gallery;
     }
 }

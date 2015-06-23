@@ -4,7 +4,7 @@ namespace Webaccess\CMS\Entities\Blocks;
 
 use CMS\Entities\Block;
 use CMS\Entities\Blocks\GalleryBlock as GalleryBlockEntity;
-use CMS\Structures\DataStructure;
+use CMS\DataStructure;
 use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;
 

@@ -6,7 +6,7 @@ use Webaccess\CMS\Interactors\GalleryItems\CreateGalleryItemInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\DeleteGalleryItemInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\UpdateGalleryItemInteractor;
-use CMS\Structures\DataStructure;
+use CMS\DataStructure;
 use Webaccess\WCMSLaravel\Http\Controllers\Back\AdminController;
 
 class GalleryItemController extends AdminController

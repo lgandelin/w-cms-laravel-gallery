@@ -35,7 +35,7 @@ $(document).ready(function() {
                     $('.gallery-item-form .link').val(data.gallery_item.link);
                     $('.gallery-item-form #gallery-item-media-id .thumbnail img').attr('src', data.gallery_item.media_src);
                     $('.gallery-item-form #gallery-item-media-id .media-name').text(data.gallery_item.media_name);
-                    $('.gallery-item-form #gallery-item-media-id .media_id').val(data.gallery_item.media_id);
+                    $('.gallery-item-form #gallery-item-media-id input[name="mediaID"]').val(data.gallery_item.media_id);
 
                     $('.gallery-item-form').show();
                 } else
@@ -45,7 +45,7 @@ $(document).ready(function() {
     });
 
     //Valid gallery item
-    $('.gallery-item-form .btn-valid').click(function() {
+    $('body').on('click', '.gallery-item-form .btn-valid', function() {
         if ($(this).attr('data-action') == 'create') {
             var input_data = {
                 'title': $('.gallery-item-form .title').val(),

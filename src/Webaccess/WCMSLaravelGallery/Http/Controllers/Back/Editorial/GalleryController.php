@@ -9,7 +9,7 @@ use Webaccess\CMS\Interactors\Galleries\GetGalleriesInteractor;
 use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
 use Webaccess\CMS\Interactors\Galleries\UpdateGalleryInteractor;
 use Webaccess\CMS\Interactors\GalleryItems\GetGalleryItemsInteractor;
-use CMS\Structures\DataStructure;
+use CMS\DataStructure;
 use CMS\Interactors\Medias\GetMediasInteractor;
 use CMS\Interactors\MediaFormats\GetMediaFormatsInteractor;
 use Webaccess\WCMSLaravel\Http\Controllers\Back\AdminController;

@@ -7,7 +7,7 @@ use CMS\Interactors\Medias\GetMediaInteractor;
 use CMS\Interactors\MediaFormats\GetMediaFormatInteractor;
 use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
 use Webaccess\WCMSLaravel\Helpers\ShortcutHelper;
-use CMS\Structures\DataStructure;
+use CMS\DataStructure;
 
 class GetGalleryItemsInteractor
 {
