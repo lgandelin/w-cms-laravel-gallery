@@ -108,10 +108,6 @@ class GalleryItem extends Entity
 
     public function valid()
     {
-        if (!is_int($this->getOrder())) {
-            throw new \InvalidArgumentException('You must provide an integer for the gallery item order');
-        }
-
         return true;
     }
 }
