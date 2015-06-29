@@ -66,7 +66,7 @@
                 <option value="">{{ trans('w-cms-laravel::pages.choose_media_format') }}</option>
                 @if (isset($media_formats))
                 @foreach ($media_formats as $media_format)
-                <option value="{{ $media_format->ID }}" @if (isset($gallery->media_format_id) && $gallery->media_format_id == $media_format->ID) selected="selected" @endif>{{ $media_format->name }} ({{ $media_format->width }} x {{ $media_format->height}})</option>
+                <option value="{{ $media_format->ID }}" @if (isset($gallery->mediaformatID) && $gallery->mediaformatID == $media_format->ID) selected="selected" @endif>{{ $media_format->name }} ({{ $media_format->width }} x {{ $media_format->height}})</option>
                 @endforeach
                 @endif
             </select>
@@ -118,7 +118,7 @@
 
                         <!-- Media -->
                         <div class="form-group">
-                            @include ('w-cms-laravel::back.editorial.includes.media_field', ['divID' => 'gallery-item', 'media' => null])
+                            @include ('w-cms-laravel::back.editorial.includes.fields.media_field', ['divID' => 'gallery-item', 'media' => null])
                         </div>
                         <!-- Media -->
 
@@ -174,6 +174,6 @@
         @endif
 
     </div>
-    @include ('w-cms-laravel::back.editorial.includes.media_modal')
+    @include ('w-cms-laravel::back.editorial.includes.modals.media_modal')
 </div>
 @stop

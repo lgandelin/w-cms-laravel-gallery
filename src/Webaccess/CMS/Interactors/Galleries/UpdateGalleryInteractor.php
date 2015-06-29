@@ -10,7 +10,7 @@ class UpdateGalleryInteractor extends GetGalleryInteractor
     public function run($galleryID, DataStructure $galleryStructure)
     {
         if ($gallery = $this->getGalleryByID($galleryID)) {
-            $gallery-setInfos($galleryStructure);
+            $gallery->setInfos($galleryStructure);
             $gallery->valid();
 
             if ($this->anotherGalleryExistsWithSameIdentifier($galleryID, $gallery->getIdentifier())) {
