@@ -12,7 +12,7 @@ class GetGalleryItemsInteractor
     public function getAll($galleryID, $structure = false)
     {
         $gallery = (new GetGalleryInteractor())->getGalleryByID($galleryID);
-        $galleryItems = Context::getRepository('gallery_item')->findByGalleryID($galleryID);
+        $galleryItems = Context::get('gallery_item')->findByGalleryID($galleryID);
 
         return ($structure) ? $this->getDataStructures($galleryItems, $gallery->getMediaFormatID()) : $galleryItems;
     }

@@ -13,7 +13,7 @@ class UpdateGalleryItemInteractor extends GetGalleryItemInteractor
             $galleryItem->setInfos($galleryItemStructure);
             $galleryItem->valid();
 
-            Context::getRepository('gallery_item')->updateGalleryItem($galleryItem);
+            Context::get('gallery_item')->updateGalleryItem($galleryItem);
         }
     }
 }

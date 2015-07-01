@@ -16,19 +16,19 @@ class WCMSLaravelGalleryServiceProvider extends WCMSLaravelModuleServiceProvider
         include(__DIR__ . '/Http/routes.php');
         parent::initModule('gallery', __DIR__ . '/../../');
 
-        $this->app->make('AdminMenu')->addItem([
+        Context::addTo('editorial_menu_items', 'galleries', [
             'route_name' => 'back_galleries_index',
             'class_name' => 'glyphicon-picture',
             'label' => trans('w-cms-laravel-gallery-back::galleries.galleries')
         ]);
 
-        \App::make('BlockTypesVariable')->addVariable('galleries', (new GetGalleriesInteractor())->getAll(null, true));
+        Context::addTo('block_variables', 'galleries', (new GetGalleriesInteractor())->getAll(null, true));
     }
 
     public function register()
     {
-        Context::addRepository('gallery', new EloquentGalleryRepository());
-        Context::addRepository('gallery_item',  new EloquentGalleryItemRepository());
-        Context::addRepository('block_gallery',  new EloquentGalleryBlockRepository());
+        Context::add('gallery', new EloquentGalleryRepository());
+        Context::add('gallery_item',  new EloquentGalleryItemRepository());
+        Context::add('block_gallery',  new EloquentGalleryBlockRepository());
     }
 }

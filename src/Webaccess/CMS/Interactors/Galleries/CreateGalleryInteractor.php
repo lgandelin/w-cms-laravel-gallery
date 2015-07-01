@@ -18,11 +18,11 @@ class CreateGalleryInteractor
             throw new \Exception('There is already a gallery with the same identifier');
         }
 
-        return Context::getRepository('gallery')->createGallery($gallery);
+        return Context::get('gallery')->createGallery($gallery);
     }
 
     private function anotherExistingGalleryWithSameIdentifier($identifier)
     {
-        return Context::getRepository('gallery')->findByIdentifier($identifier);
+        return Context::get('gallery')->findByIdentifier($identifier);
     }
 }

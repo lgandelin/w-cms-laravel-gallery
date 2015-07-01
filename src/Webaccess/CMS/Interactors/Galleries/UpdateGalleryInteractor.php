@@ -17,13 +17,13 @@ class UpdateGalleryInteractor extends GetGalleryInteractor
                 throw new \Exception('There is already a gallery with the same identifier');
             }
 
-            Context::getRepository('gallery')->updateGallery($gallery);
+            Context::get('gallery')->updateGallery($gallery);
         }
     }
 
     private function anotherGalleryExistsWithSameIdentifier($galleryID, $galleryIdentifier)
     {
-        $existingGallery = Context::getRepository('gallery')->findByIdentifier($galleryIdentifier);
+        $existingGallery = Context::get('gallery')->findByIdentifier($galleryIdentifier);
 
         return ($existingGallery && $existingGallery->getID() != $galleryID);
     }

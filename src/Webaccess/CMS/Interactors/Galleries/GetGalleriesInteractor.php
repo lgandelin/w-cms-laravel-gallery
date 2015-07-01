@@ -8,7 +8,7 @@ class GetGalleriesInteractor
 {
     public function getAll($langID = null, $structure = false)
     {
-        $galleries = Context::getRepository('gallery')->findAll($langID);
+        $galleries = Context::get('gallery')->findAll($langID);
 
         return ($structure) ? $this->getGalleryStructures($galleries) : $galleries;
     }

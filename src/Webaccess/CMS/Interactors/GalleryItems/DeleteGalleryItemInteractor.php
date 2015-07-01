@@ -9,7 +9,7 @@ class DeleteGalleryItemInteractor extends GetGalleryItemInteractor
     public function run($galleryItemID)
     {
         if ($this->getGalleryItemByID($galleryItemID)) {
-            Context::getRepository('gallery_item')->deleteGalleryItem($galleryItemID);
+            Context::get('gallery_item')->deleteGalleryItem($galleryItemID);
         }
     }
 }

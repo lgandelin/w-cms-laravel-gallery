@@ -10,7 +10,7 @@ class GetGalleryItemInteractor
 {
     public function GetGalleryItemByID($galleryItemID, $structure = false)
     {
-        if (!$galleryItem = Context::getRepository('gallery_item')->findByID($galleryItemID)) {
+        if (!$galleryItem = Context::get('gallery_item')->findByID($galleryItemID)) {
             throw new \Exception('The gallery item was not found');
         }
 

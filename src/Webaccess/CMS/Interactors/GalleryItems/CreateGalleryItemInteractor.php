@@ -14,6 +14,6 @@ class CreateGalleryItemInteractor
         $galleryItem->setInfos($galleryItemStructure);
         $galleryItem->valid();
 
-        return Context::getRepository('gallery_item')->createGalleryItem($galleryItem);
+        return Context::get('gallery_item')->createGalleryItem($galleryItem);
     }
 }
