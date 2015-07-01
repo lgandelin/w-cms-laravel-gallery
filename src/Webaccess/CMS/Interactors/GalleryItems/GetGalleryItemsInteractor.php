@@ -4,10 +4,8 @@ namespace Webaccess\CMS\Interactors\GalleryItems;
 
 use CMS\Context;
 use CMS\Interactors\Medias\GetMediaInteractor;
-use CMS\Interactors\MediaFormats\GetMediaFormatInteractor;
 use Webaccess\CMS\Interactors\Galleries\GetGalleryInteractor;
 use Webaccess\WCMSLaravel\Helpers\ShortcutHelper;
-use CMS\DataStructure;
 
 class GetGalleryItemsInteractor
 {
@@ -27,13 +25,7 @@ class GetGalleryItemsInteractor
                 $galleryItem = $galleryItem->toStructure();
 
                 if ($galleryItem->mediaID) {
-                    $galleryItem->media = (new GetMediaInteractor())->getMediaByID($galleryItem->mediaID, true);
-
-                    if ($mediaFormatID) {
-                        $mediaFormat = (new GetMediaFormatInteractor())->getMediaFormatByID($mediaFormatID, true);
-                        $galleryItem->media->fileName = $mediaFormat->width . '_' . $mediaFormat->height . '_' . $galleryItem->media->fileName;
-                    }
-
+                    $galleryItem->media = (new GetMediaInteractor())->getMediaByID($galleryItem->mediaID, $mediaFormatID, true);
                     $galleryItem->media_src = asset(ShortcutHelper::get_uploads_folder() . $galleryItem->media->ID . '/' . $galleryItem->media->fileName);
                     $galleryItem->media_name = $galleryItem->media->name;
                     $galleryItem->mediaID = $galleryItem->media->ID;
